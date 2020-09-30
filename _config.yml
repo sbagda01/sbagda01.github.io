@@ -127,9 +127,9 @@ comments:
   gitalk:
     clientID    : 2b4eb753d4cb06a75237 # GitHub Application Client ID
     clientSecret: 7f66047da11d2b0319309c4530877d0572b6bdd4 # GitHub Application Client Secret
-    repository  : https://sbagda01.github.io/ # GitHub repo
+    repository  : sbagda01.github.io # GitHub repo
     owner       : sbagda01 # GitHub repo owner
-    admin: sbagda01 # GitHub repo owner and collaborators, only these guys can initialize GitHub issues, IT IS A LIST.
+    admin       : sbagda01 # GitHub repo owner and collaborators, only these guys can initialize GitHub issues, IT IS A LIST.
       # - your GitHub Id
 
   ## Valine
