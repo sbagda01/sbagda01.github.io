@@ -3,10 +3,8 @@ title: How to pretend your know Git.
 layout: article
 tags: FirstDayAtWork, Git
 key: git_is_going_to_eat_you
-published: false
+published: true
 ---
-# Git is going to eat you and how to pretend you know Git.
-
 ## Prologue:
 
 This is my first post in a series of posts called "First Day at Work". My aim is to help people on their first day as professional software developers. I'm going to try to introduce tools, concepts, tips and skills you are going to need from day one. None of the posts will be a deep dive into any of the topics, my goal is not to make you an expert, but to make you feel more comfortable, confident and not feel overwhelmed on you first day
