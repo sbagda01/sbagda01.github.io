@@ -4,4 +4,7 @@ layout: article
 tags: Welcome
 ---
 
-Bla bla bla
+## Shortcuts
+
+
+Click `s` to start searching. Navigate with the arrows to select a post. Click enter to open.
