@@ -47,11 +47,11 @@ Russian, but consider Greek as my main language.
 Here are a couple of other projects worth mentioning:
 
 - [MCE injection and tolerance at OS level](https://bitbucket.org/sbagda01/hardware-error-injection-analysis-and-tolerance-at-operating/src/master/). This work was done as part of my master dissertation in UPC.
-    - If you are really into computer architecture, check it out. It's about injecting, analyzing and preventing physical memory errors.
+    - If you are into computer architecture, check it out. It's about injecting, analyzing and preventing physical memory errors.
 - [RISA](https://bitbucket.org/sbagda01/risa-emulator/src/master/) is a reversible instruction set emulator I developed for my dissertation in UCY.
     - If you are *really* into computer architecture go check the [wiki](https://bitbucket.org/sbagda01/risa-emulator/wiki/Home).
 
 ### Site Shortcuts
 
-Enough about me, go read some posts. Click `s` to start searching. Navigate with the `arrows` to select a post. 
+Enough about me, go read some posts. Press `s` to start searching. Navigate with the `arrows` to select a post. 
 Press `enter` to open. Or, you can always use your mouse.
