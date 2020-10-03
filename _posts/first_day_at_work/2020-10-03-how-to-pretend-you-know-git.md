@@ -1,5 +1,5 @@
 ---
-title: How to pretend your know Git.
+title: How to pretend you know Git.
 layout: article
 tags: FirstDayAtWork, Git
 key: git_is_going_to_eat_you
@@ -752,4 +752,4 @@ It really isn't and things will go wrong all the time. Believe me, Git makes me 
 
 
 # Good Git sources
-Atlasian, git-scm, stackoverflow.
+Atlasian, git-scm, stackoverflow. 
