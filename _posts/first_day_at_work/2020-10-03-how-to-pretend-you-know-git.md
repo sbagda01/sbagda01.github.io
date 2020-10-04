@@ -724,8 +724,72 @@ At some point Bob also completes feature B and following the exact same steps, h
 
 ## Manipulating commits
 
-1. cherry-picking
-2. rebasing
+I have given a lot of thought to decide if I should include this section in this post. On the one hand, it is a little bit more advanced than everything else we have seen so far, but on the other hand both of the techniques introduced here can be very handy and save you a lot of time in certain situations. if you feel like this is too much, feel free to skip to the next section and come back when you feel more confident.
+
+### Cherry-picking
+
+The `cherry-pick` command allows us to pick one or more very specific commits
+and apply them onto a selected branch. I find it very useful in two scenarios.
+
+### Shared work between feature branches
+
+Let's go back to our initial program and add a couple of more features. First
+we need a function that would calculate the product of all the numbers in a list
+and a function that would print the product to the standard output. The second
+feature is that we need a function that would calculate the product of all evens
+in a list and a function that would print it to the standard output. I can probably see where am I going with this. One or two developers are asked to build the two features. Let's start on the first one. First I made sure that `master` was up to date, then I created a new branch called `calculate_and_print_the_product` based on master. First let's add a function what calculates a product of the numbers in a list.
+
+```python
+"""calculate_the_sum.py"""
+
+import numpy
+
+...
+
+def calculate_the_product(list_of_numbers):
+    return numpy.prod(list_of_numbers)
+```
+
+```bash
+Sergiys-MacBook-Pro:code sbagda01$ git commit -am "Calculate the product."
+[calculate_and_print_the_product 3cd3a83] Calculate the product.
+ 1 file changed, 6 insertions(+)
+```
+
+Now let's add a function that would print the product prepended by a message.
+
+```python
+"""calculate_the_sum.py"""
+
+...
+
+def print_number_to_standard_output(msg, number):
+    print(f"{msg}:{number}")
+```
+
+```bash
+Sergiys-MacBook-Pro:code sbagda01$ git commit -am "Print the product."
+[calculate_and_print_the_product 6fcfa76] Print the product.
+ 1 file changed, 3 insertions(+)
+```
+
+We can now push our new branch to the origin and (probably) create a pull request.
+
+```bash
+Sergiys-MacBook-Pro:code sbagda01$ git push origin calculate_and_print_the_product
+Enumerating objects: 8, done.
+Counting objects: 100% (8/8), done.
+...
+```
+
+Make sure that everything looks like it should by running: `git log --oneline`.
+
+> Note: You can use cherry-pick with ranges as well but if the range is getting to big you might prefer to rebase or actually merge.
+
+### Rebasing
+
+> Note: The `calculate_the_sum.py` file's name is now completely out of sync with its content. I will let you figure out how to rename files using Git.
+
 
 ## Yeah right, everything is so easy
 
@@ -746,10 +810,18 @@ It really isn't and things will go wrong all the time. Believe me, Git makes me 
 
 ## Follow on topics
 
+I had to wrap this post up at some point and I feel like this is the ...
+
 1. Environments & how are they related to git.
 2. Coding standards.
 3. The psychology of pull requests & how to find a way out when nobody likes your code.
+4. Keeping the main history clean.
 
+## Great Git sources to learn
 
-# Good Git sources
-Atlasian, git-scm, stackoverflow. 
+[Atlassian](https://www.atlassian.com/git/tutorials), [git-scm](https://git-scm.com/docs/), [StackOverflow](https://stackoverflow.com/questions/tagged/git).
+
+--------------------------
+
+if you enjoyed this post and learned something, please leave some comments below
+and share it. Remember, if it was useful to you it might be useful to someone else!
