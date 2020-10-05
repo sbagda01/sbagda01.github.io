@@ -1,7 +1,7 @@
 ---
-title: How to pretend you know Git, Part 1.
+title: How to pretend you know Git Part 1.
 layout: article
-tags: FirstDayAtWork Git Part1
+tags: FirstDayAtWork Git Part1 Long HandsOn
 key: how_to_pretend_you_know_git
 published: true
 ---
@@ -724,11 +724,18 @@ At some point Bob also completes feature B and following the exact same steps, h
 
 ## Yeah right, it's so easy
 
-It isn't and things will go wrong all the time. Believe me, Git made me question my life choices a couple of times. Part of being a software developer is managing stress, anxiety, developing patience and tolerance. At some point you are going to make a mess using Git. Here are a few tips to prevent that and a few tips to fix your mess.
+It isn't, and things can always go wrong. A big part of being a software developer is managing stress, anxiety, developing patience and tolerance (these are all skills,and yes I will write about it in another post). At some point you are going to make a mess using Git. Here are a few tips to prevent that and a few tips to fix your mess. But what's a definition of mess? In this case you would think it's quite simple: Data Loss.
+
+### How can we loose data using Git?
+
+The good news is, it's actually very difficult.  
 
 ### Prevention
 
+So you started working yesterday and today you forced pushed a 5 years old stale branch into the main history. Nothing works anymore and people hate you. Lesson number 1, they probably deserve it. 
+
 1. Comment before execution.
+
 2. Dry run.
 3. Ask.
 
@@ -739,14 +746,24 @@ It isn't and things will go wrong all the time. Believe me, Git made me question
 3. Ask.
 
 
-## Summary and more
+## Summary
 
-I had to wrap this post up at some point and I feel like this is it.
+I had to wrap this post up at some point and I feel that we are in a good place to
+do it. You have learned how to initialize a new Git repository, how to create commits, create branches, add remotes, push your code, merge other branches, create pull requests and more. You have also learned a few little tricks to prevent unexpected things from happening and how to deal with them when they do. Great work,
+and keep it up.
 
-1. Environments and how are they related to Git.
-2. Coding standards and how to enforce them.
-3. The psychology of pull requests and how to find a way out when nobody likes your code.
-4. How to keep the main history clean.
+
+## Posts to follow up 
+
+There are a few topics mentioned in this post that will be explored further,
+including a shorter but a little more advanced second part on Git.
+
+1. How to pretend you know Git, Part 2 (in progress).
+2. Environments and how are they related to Git.
+3. Coding standards and how to enforce them.
+4. The psychology of pull requests and how to find a way out when nobody likes your code.
+5. Programmer's well being.
+
 
 ## Great Git sources to learn
 

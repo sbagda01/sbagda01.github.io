@@ -5,9 +5,6 @@ tags: FirstDayAtWork Git Part2
 key: how_to_pretend_you_know_git_part_2
 published: false
 ---
-## Manipulating commits:
-
-I have given a lot of thought to decide if I should include this section in this post. On the one hand, it is a little bit more advanced than everything else we have seen so far, but on the other hand both of the techniques introduced here can be very handy and save you a lot of time in certain situations. if you feel like this is too much, feel free to skip Cherry-picking and Rebasing and come back when you feel more confident.
 
 ## Cherry-picking
 
@@ -170,3 +167,9 @@ The other scenario where I find cherry-picking useful is when you have parallel 
 
 Rebasing is similar to cherry-kicking in the sense that you can replay changes that
 were committed to one branch, onto another. 
+
+
+## Reverting
+
+
+## How to keep the main history clean.
