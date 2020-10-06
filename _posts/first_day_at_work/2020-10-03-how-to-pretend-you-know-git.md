@@ -724,33 +724,37 @@ At some point Bob also completes feature B and following the exact same steps, h
 
 ## Yeah right, it's so easy
 
-It isn't, and things can always go wrong. A big part of being a software developer is managing stress, anxiety, developing patience and tolerance (these are all skills,and yes I will write about it in another post). At some point you are going to make a mess using Git. Here are a few tips to prevent that and a few tips to fix your mess. But what's a definition of mess? In this case you would think it's quite simple: Data Loss.
+It isn't, and things can always go wrong. A big part of being a software developer is managing stress, anxiety, developing patience and tolerance (these are all skills,and yes I will write about it in another post). At some point you are going to make a mess using Git. Here are a few tips to prevent that and to fix your mess. But what's a definition of mess? In this case you would think it's quite simple: Data Loss.
 
 ### How can we loose data using Git?
 
-The good news is, it's actually very difficult.  
+The good news is, it's actually very very difficult. Once you have committed something using Git you will have to go to some extreme measures to actually delete it. Even if you overwrite commits using
+force push, you can still recover (for a certain period of time)  by using `reflog`. Git's `reflog` records every commit that `HEAD` has pointed to, it is a kind of undo history. 
 
-### Prevention
+However, there are two caveats. First, `reflog` does not keep the records forever and you might loose data if you are trying to recover too late (about two weeks or less if you run `git prune` or `git gc` which would permanently unreachable commits). Second, `reflog` data
+only lives on your **local** repository. If you delete your local repo, the data is gone.
 
-So you started working yesterday and today you forced pushed a 5 years old stale branch into the main history. Nothing works anymore and people hate you. Lesson number 1, they probably deserve it. 
+Most likely, you won't cause data loss, but you might still cause some inconvenience to yourself or your team and waste some time trying to fix it.
 
-1. Comment before execution.
+### Pro tips
 
-2. Dry run.
-3. Ask.
+Avoid using switches like `-f (--force)`, `--hard` with any of Git's
+commands unless you are absolutely sure about what you are trying to achieve. Git always tries to protect you from doing something weird (like re-writing history), the above switches tell Git that you know what you are doing so it won't try to protect you. Avoid using `git prune` and `git gc` as they delete commits permanently.
 
-### Fix
+One trick I always use when I'm writing suspicious commands is to prepend the command with `#` (comment-out in bash). This way I have a second opportunity to read the command, then remove `#` and
+then execute it. It's a simple trick that will save you a ton of time. 
 
-1. Research.
-2. Try to simulate your fix.
-3. Ask.
+Another trick is to use dry runs. Many of Git commands support dry runs or equivalent. These will tell you what the actual commands would do in case you execute it. Check Git documentation for a command you are interested in to see how to invoke this option.
+
+The last and the most important trick in my opinion is to .. search & ask. If you don't know how to achieve something, or how to use a command or simply slightly in doubt, search & ask. Search on the internet, look into tutorials, StackOverflow answers, books, videos, whatever. If it's still not clear, ask one of your teammates, ask in a forum, try it in a protected environment! 
+
+Don't worry, everyone loves the opportunity to share their knowledge and will love to help you, you will be in their position in no time. If you make a mess, the best you can do is to be honest and try to explain exactly what you did and how. Only those who never try anything, don't make mistakes.
 
 
 ## Summary
 
 I had to wrap this post up at some point and I feel that we are in a good place to
-do it. You have learned how to initialize a new Git repository, how to create commits, create branches, add remotes, push your code, merge other branches, create pull requests and more. You have also learned a few little tricks to prevent unexpected things from happening and how to deal with them when they do. Great work,
-and keep it up.
+do it. You have learned how to initialize a new Git repository, how to create commits, create branches, add remotes, push your code, merge other branches, create pull requests and more. You have also learned a few little tricks to prevent unexpected things from happening and how to deal with them when they do. You will rock on your first day at work. Great job, and keep it up.
 
 
 ## Posts to follow up 
