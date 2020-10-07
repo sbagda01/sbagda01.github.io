@@ -1,7 +1,7 @@
 ---
 title: How to pretend you know Git Part 1.
 layout: article
-tags: FirstDayAtWork Git Part1 Long HandsOn
+tags: FirstDayAtWork Git Part1 HandsOn
 key: how_to_pretend_you_know_git
 published: true
 ---
@@ -610,7 +610,7 @@ Sergiys-MacBook-Pro:code sbagda01$ git remote -v
 ```
 
 ### How to start a Git repo
-As you can see we haven't added a remote to our repository yet. At this point it's worth mentioning that there are two ways to get started with a Git repository. The first is the one we used at the beginning of this post: `git init`. This can be used to initialize a Git repository within an existing (on you local disk) directory. If however there already is remote Git repository, you can use `git clone`. Git clone works with `https` (most commonly used) and `ssh` protocols. For example:
+As you can see we haven't added a remote to our repository yet. At this point it's worth mentioning that there are two ways to get started with a Git repository. The first is the one we used at the beginning of this post: `git init`. This can be used to initialize a Git repository within an existing (on you local disk) directory. If however, there already is a remote Git repository, you can use `git clone`. Git clone works with `https` (most commonly used) and `ssh` protocols. For example:
 
 ```bash
 Sergiys-MacBook-Pro:~ sbagda01$ git clone https://github.com/sbagda01/sbagda01.github.io.git
@@ -621,7 +621,7 @@ Receiving objects: 100% (27673/27673), 99.25 MiB | 3.47 MiB/s, done.
 Resolving deltas: 100% (18765/18765), done.
 ```
 
-Pulls down and sets up the `https://github.com/sbagda01/sbagda01.github.io.git` repository on your local disk and automatically configures the `origin` remote for you.
+pulls down and sets up the `https://github.com/sbagda01/sbagda01.github.io.git` repository on your local disk and automatically configures the `origin` remote for you.
 
 ```bash
 Sergiys-MacBook-Pro:sbagda01.github.io sbagda01$ git remote -v
@@ -633,7 +633,7 @@ This means that you can fetch data from and push data to the `origin` (origin is
 
 ### Adding remotes
 
-As you have seen above, our repository, does not have any remotes yet, let's change that. I'm going to use GitHub as our centralized hosting provider in order to store our repository. In order to do that you will have to create an account on [GitHub](https://github.com/) and create a repository. I'm going to create an repository called `git-is-going-to-eat-you-code`.
+As you have seen above, our repository, does not have any remotes yet, let's change that. I'm going to use GitHub as our centralized hosting provider in order to store our repository. In order to do that you will have to create an account on [GitHub](https://github.com/) and create a repository. I'm going to create a repository called `git-is-going-to-eat-you-code`.
 
 ```bash
 Sergiys-MacBook-Pro:code sbagda01$ git remote add origin https://github.com/sbagda01/git-is-going-to-eat-you-code/
@@ -699,13 +699,13 @@ Alice decides that feature A is ready to become part of `master`, what does she 
 
 Most repositories have protection rules imposed on the main branch. This is **not** Git's feature, but it's offered by most if not all hosting providers. This means that after
 merging A into master locally, if Alice tries to push master to the remote she is going to receive an error. Most repositories require your code to be reviewed by one or more people. This is to detect any faults, bugs in the code or verify coding standards. After all, the more
-people look at the code, the problems will be detected. Also as you will learn pretty quickly,
-the earlier you catch a defect in the code, the easier, faster and cheaper it is to fix it
+people look at the code, the more problems will be detected. Also as you will learn pretty quickly,
+the earlier you catch a defect in the code, the easier, faster and cheaper it is to fix it.
 
 ### Pull requests
 
 In order to get your code reviewed, code hosting websites like GitHub and BitBucket support a feature called **Pull requests** through their UI and even their own command line tools. This 
-provides an accessible way to understand the changes that are about to be introduced to the base (master or any other) branch by the feature branch. Usually pull requests allow the reviewer, to comment, suggest and request changes to the feature branch because they might believe that something is wrong or simply can be improved. Here is a list of all [pull requests](https://github.com/python/cpython/pulls/) that are currently opened for the python's public repository. Feel free to check a few pull requests out and see how people review other people's code! You might even want to contribute yourself.
+provides an accessible way to understand the changes that are about to be introduced to the base (master or any other) branch by the feature branch. Usually pull requests allow the reviewer to comment, suggest and request changes to the feature branch because they might believe that something is wrong or simply can be improved. Here is a list of all [pull requests](https://github.com/python/cpython/pulls/) that are currently opened for the python's public repository. Feel free to check a few pull requests out and see how people review other people's code! You might even want to contribute yourself.
 
 > Warning: Git does offer a request-pull command but it is not to be confused with the pull requests in this section. You can check [this](https://stackoverflow.com/a/20289778/2942762) answer on StackOverflow to understand the difference.
 
@@ -725,19 +725,21 @@ At some point Bob also completes feature B and following the exact same steps, h
 
 ## Yeah right, it's so easy
 
-It isn't, and things can always go wrong. A big part of being a software developer is managing stress, anxiety, developing patience and tolerance (these are all skills,and yes I will write about it in another post). At some point you are going to make a mess using Git. Here are a few tips to prevent that and to fix your mess. But what's a definition of mess? In this case you would think it's quite simple: Data Loss.
+It isn't, and things can always go wrong. A big part of being a software developer is managing stress, anxiety, developing patience and tolerance (these are all skills, and yes you guessed it, I will write about it in another post). At some point you are going to make a mess using Git. Here are a few tips to prevent that and to fix your mess. But what's a definition of mess? In this case you would think it's quite simple: Data Loss.
 
 ### How can we loose data using Git?
 
 The good news is, it's actually very very difficult. Once you have committed something using Git you will have to go to some extreme measures to actually delete it. Even if you overwrite commits using
 force push, you can still recover (for a certain period of time)  by using `reflog`. Git's `reflog` records every commit that `HEAD` has pointed to, it is a kind of undo history. 
 
-However, there are two caveats. First, `reflog` does not keep the records forever and you might loose data if you are trying to recover too late (about two weeks or less if you run `git prune` or `git gc` which would permanently unreachable commits). Second, `reflog` data
+However, there are two caveats. First, `reflog` does not keep the records forever and you might loose data if you are trying to recover too late (about two weeks or less if you run `git prune` or `git gc` which would permanently delete unreachable commits). Second, `reflog` data
 only lives on your **local** repository. If you delete your local repo, the data is gone.
 
 Most likely, you won't cause data loss, but you might still cause some inconvenience to yourself or your team and waste some time trying to fix it.
 
 ### Pro tips
+
+Commit early and frequently. This is very simple, the more commits, the more freedom you have and the more options.
 
 Avoid using switches like `-f (--force)`, `--hard` with any of Git's
 commands unless you are absolutely sure about what you are trying to achieve. Git always tries to protect you from doing something weird (like re-writing history), the above switches tell Git that you know what you are doing so it won't try to protect you. Avoid using `git prune` and `git gc` as they delete commits permanently.
@@ -745,11 +747,11 @@ commands unless you are absolutely sure about what you are trying to achieve. Gi
 One trick I always use when I'm writing suspicious commands is to prepend the command with `#` (comment-out in bash). This way I have a second opportunity to read the command, then remove `#` and
 then execute it. It's a simple trick that will save you a ton of time. 
 
-Another trick is to use dry runs. Many of Git commands support dry runs or equivalent. These will tell you what the actual commands would do in case you execute it. Check Git documentation for a command you are interested in to see how to invoke this option.
+Another trick is to use dry runs. Many of Git commands support dry runs or equivalent. These will tell you what the actual command would do in case you execute it. Check Git documentation for a command you are interested in to see how to invoke this option.
 
 The last and the most important trick in my opinion is to .. search & ask. If you don't know how to achieve something, or how to use a command or simply slightly in doubt, search & ask. Search on the internet, look into tutorials, StackOverflow answers, books, videos, whatever. If it's still not clear, ask one of your teammates, ask in a forum, try it in a protected environment! 
 
-Don't worry, everyone loves the opportunity to share their knowledge and will love to help you, you will be in their position in no time. If you make a mess, the best you can do is to be honest and try to explain exactly what you did and how. Only those who never try anything, don't make mistakes.
+Don't worry, everyone loves the opportunity to share their knowledge and will love to help you, you will be in their position in no time. If you make a mess, the best you can do is to be honest and try to explain exactly what you did and how. Only those who never try anything don't make mistakes.
 
 
 ## Summary
@@ -764,14 +766,15 @@ There are a few topics mentioned in this post that will be explored further,
 including a shorter but a little more advanced second part on Git.
 
 1. How to pretend you know Git, Part 2 (in progress).
-2. Environments and how are they related to Git.
+2. Pipelines, environements and how are they related to Git.
 3. Coding standards and how to enforce them.
 4. The psychology of pull requests and how to find a way out when nobody likes your code.
 5. Programmer's well being.
 6. Developer's toolbox.
 
+Let me know in the comments which one would you like to read the most.
 
-## Great Git sources to learn
+## Great sources to learn Git
 
 [Atlassian](https://www.atlassian.com/git/tutorials), [git-scm](https://git-scm.com/docs/), [StackOverflow](https://stackoverflow.com/questions/tagged/git).
 
