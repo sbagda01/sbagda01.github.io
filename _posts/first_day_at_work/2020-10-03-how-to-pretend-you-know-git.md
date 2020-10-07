@@ -5,6 +5,7 @@ tags: FirstDayAtWork Git Part1 Long HandsOn
 key: how_to_pretend_you_know_git
 published: true
 ---
+
 ## Prologue:
 
 This is my first post in a series of posts called "First Day at Work". My aim is to help people on their first day as professional software developers. I'm going to try to introduce tools, concepts, tips and skills you are going to need from day one. None of the posts will be a deep dive into any of the topics, my goal is not to make you an expert, but to make you feel more comfortable, confident and not feel overwhelmed on you first day
@@ -21,18 +22,18 @@ Git is a very powerful tool to keep a history of file versions and enable collab
 
 ## Commits
 
-In its core Git keeps track of changes you make to a file(s). Think about how extremely useful this is. You can create a file, modify it several times and then go trough all the changes you have made. Here is the thing, Git won't remember any of the changes you have made if you don't manually save the state you would like it to remember. Saving a state (or snapshot) is known as creating a commit. A commit remembers what your files look like (basically takes a picture of what all your files look like at that moment and stores a reference to that snapshot - [What is Git?](https://git-scm.com/book/en/v2/Getting-Started-What-is-Git%3F#what_is_git_section)). Let's do some practice.
+In its core Git keeps track of files. Think about how extremely useful this is. You can create a file, modify it several times and then go trough all the changes you have made. Here is the thing, Git won't remember any of the changes you have made if you don't manually save the state you would like it to remember. Saving a state (or snapshot) is known as creating a commit. A commit remembers what your files look like (basically takes a picture of what all your files look like at that moment and stores a reference to that snapshot - [What is Git?](https://git-scm.com/book/en/v2/Getting-Started-What-is-Git%3F#what_is_git_section)). Let's do some practice.
 
 
 > Note:
 > Please don't diverge from this post, do not try to read the linked tutorials,
 or other references. This post is designed in a way to hide Git's implementation details and focus on its usability, especially on features you will be using from day one. I will try to gradually introduce you to more advanced topics but at this point I don't want you to look into Git's internals because you will either get lost and we will never find you again or the topic will become so overwhelming that you will simply decide to 
-try random stuff until it works. This is the exact opposite of what I want to achieve with this series of blogs.
+try random stuff until it works. This is the exact opposite of what I want to achieve with this series of posts.
 
 
 ### Scenario A
 
-Imagine that you want to develop a computer program which would read a list of numbers from a file, calculate the sum of evens and write the same list of numbers into another file (we are going to output the sum of evens later on as well). I would break such a program in three parts: **a.** read a list of numbers into memory; **b.** calculate the sum of even numbers; **c.** write the initial numbers in a file. This is also how I would organize my commits. This would give me several advantages, some of which I have listed below:
+Imagine that you want to develop a few functions which would read a list of numbers from a file, calculate the sum of evens and write the same list of numbers into another file with some formatting. I would break such a program in three parts: **a.** read a list of numbers into memory; **b.** calculate the sum of even numbers; **c.** write the initial numbers in a file with some formatting. This is also how I would organize my commits. This would give me several advantages, some of which I have listed below:
 
 1.  It would be easy to see my thinking process if I wanted to go back and check this code. Imagine that you haven't worked on something for a few days and you want a quick refresher of what you did, reading the commits is a quick way of doing it.
 2. It would be easier for the code reviewers to see how was this program built. When you will be reviewing someone's code you are going to notice that looking at a large difference between how a file was and how it became can be really tricky. Sometime it's just easier to look at individual commits and try to understand changes in a very limited scope or at least understand the steps behind the change.
@@ -40,8 +41,8 @@ Imagine that you want to develop a computer program which would read a list of n
 4. There are a lot ways to manipulate commits, one of my favorite is cherry-picking. This is literally picking one or more commits from one history and injecting them into another. 
 
 
-Alright, here is the process of writing the above program (pseudo-python). I strongly suggest that you follow the exact process. This is so you can build the muscle memory for writing `git` commands and the habit of committing frequently.
-Let create a directory (I'm assuming your are using a *nix OS).
+Alright, here is the process of writing the above program (pseudo-python). I strongly suggest that you follow the exact process. This is so you can build the muscle memory for writing `git` commands and get into the habit of committing frequently.
+Let create a directory (I'm assuming your are using a *nix based OS).
 
 ```bash
 Sergiys-MacBook-Pro:blog_all sbagda01$ mkdir code
@@ -147,9 +148,9 @@ index 771b89d..b64971b 100644
 ```
 
 Running `git status` and `git diff` every time might look like an overkill, but believe me it will save you some trouble and a lot of time in the long term and it is a really good
-idea to build it into your muscle memory. Once, I released a python package thinking that I have include all the necessary changes. This was a dependency on a bigger application, after making use of package's new version I couldn't get the behavior I needed. Now, the hard part comes from the fact everything was working as expected when using my local version of the library but wasn't working as expected using the freshly released version. Finally, after an hour of questioning my life's and career's choices I actually compared the code of the version I realized and the previous one and guess what, the change I really needed wasn't there. I hadn't added and committed the changed file properly. 
+idea to build it into your muscle memory. Once, I released a python package thinking that I have include all the necessary changes. This was a dependency on a bigger application and after making use of the package's new version I couldn't get the behavior I needed. Now, the hard part comes from the fact that everything was working as expected when using my local version of the library but wasn't working as expected using the freshly released version. Finally, after an hour of questioning my life's and career's choices I actually compared the code of the version I realized against the previous version and guess what, the change I really needed wasn't there. I hadn't added and committed the changed file properly. 
 
-A much more frequent example is temporarily modifying a file (to check something on the fly) and then committing the change. You (or your reviewers or the tests) will most probably catch this but there go 15 minutes of wondering what is going on with your code. This kind of errors (and believe me, much trickier ones) happen and tricks like using `git status` and `git diff` for a quick check are a great way to avoid them, for the sake of your own well-being.
+A much more frequent example is temporarily modifying a file (to check something on the fly) and then committing the change. You (or your reviewers or the tests) will most probably catch this, but there go 15 minutes of wondering what is going on with your code. This kind of errors (and believe me, much trickier ones) happen and tricks like using `git status` and `git diff` for a quick check are a great way to avoid them, for the sake of your own well-being.
 
 ```python
 Sergiys-MacBook-Pro:code sbagda01$ git commit -am "Calculating the sum of evens in a list."
@@ -159,7 +160,7 @@ Sergiys-MacBook-Pro:code sbagda01$ git commit -am "Calculating the sum of evens 
 
 ## Check the commits log
 
-A great `git` command is `git log`. There are two main applications I have found very useful. First is making sure that the commits history looks it should. For example:
+A great Get command is `git log`. There are two specific applications, I have found very useful. First, is making sure that the commits history looks like it should. For example:
 
 ```bash
 Sergiys-MacBook-Pro:code sbagda01$ git log
@@ -184,7 +185,7 @@ Sergiys-MacBook-Pro:code sbagda01$ git log --oneline
 232cf51 Reading numbers from file.txt to a list.
 ```
 
-The second application of this command is to check if a piece of work is part of the history. This requires using references in your commit messages. For example if calculating the sum of event in as list was a part of a ticket with `T-100` as a reference 
+The second application of this command is to check if a piece of work is part of a history. This requires using references in your commit messages. For example if calculating the sum of evens in as list was a part of a ticket with `T-100` as a reference 
 and reading numbers from a file was part of a ticket with `T-99` as reference, a good practice would be to include that in our commit messages like:
 
 ```bash
@@ -193,7 +194,7 @@ Sergiys-MacBook-Pro:code sbagda01$ git log --oneline
 232cf51 T-99: Reading numbers from file.txt to a list.
 ```
 
-Now imagine having hundreds of commits around these two, how would you check if calculating the sum of evens in a list is part of it. 
+Now imagine having hundreds of commits around these two, how would you check if calculating the sum of evens in a list is part of it?
 
 ```bash
 Sergiys-MacBook-Pro:code sbagda01$ git log --oneline | grep -i T-99
@@ -212,7 +213,7 @@ def write_list_of_numbers_to_file(list_of_numbers):
     file.write(", ".join(", ".join(str(n) for n in list_of_numbers)))
 ```
 
-Alright `git status` and `git diff` look good so:
+Alright, `git status` and `git diff` look good so:
 
 ```bash
 Sergiys-MacBook-Pro:code sbagda01$ git commit -am "I've made a mess."
@@ -220,7 +221,7 @@ Sergiys-MacBook-Pro:code sbagda01$ git commit -am "I've made a mess."
  1 file changed, 5 insertions(+)
 ```
 
-Oh no, I've literally made a mess out of my commit. Fear not, `git reset HEAD^n` is a great way to softly reset the last `n` commits (softly means that your code changes will still be there, you have just deleted the milestones, be aware that if you have already pushed your code to a repository there will be a conflict when you try to push again after the soft reset, we will take a look at these later). This is very useful if you simply want combine the last several commit into one or do more work before committing or just commit again with a different message (I know you can also do the former by `git commit --ammend` but I refuse to remember more commands than it is necessary). 
+Oh no, I've literally made a mess out of my commit. Fear not, `git reset HEAD^n` is a great way to softly reset the last `n` commits (softly means that your code changes will still be there, you have just deleted the milestones, be aware that if you have already pushed your code to a repository there will be a conflict when you try to push again after the soft reset, we will take a look at these later). This is very useful if you simply want combine the last several commits into one or do more work before committing or just commit again with a different message (I know you can also do the former by `git commit --ammend` but I refuse to remember more commands than it is necessary). 
 
 ```bash
 Sergiys-MacBook-Pro:code sbagda01$ git reset HEAD^
@@ -229,7 +230,7 @@ M	calculate_the_sum.py
 ```
 
 Ha, so `git reset HEAD^` tells us that there are modifications to our file and they aren't
-staged for commit. Makes sense since we are in the same position as we were just before making a mess.   
+staged for commit. Makes sense, since we are in the same position as we were just before making a mess.   
 
 ```bash
 Sergiys-MacBook-Pro:code sbagda01$ git log --oneline # the log confirms it
@@ -253,7 +254,7 @@ ff12e05 (HEAD -> master) Writing a list of numbers to a file.
 
 ### Commit Hashes
 
-You have probably noticed the weird hexadecimal string appearing alongside our commit messages (ff12e05, 1da1da1, 232cf51). These are abbreviations of commit hashes. Git uses the **SHA-1** hash function to calculate commit hashes. The input is data [like your name, the date, the commit message, the changes in the commit, and most importantly, the commit hash of the previous commit](https://pretextbook.org/gfa/html/commit-hashes.html). And before you ask, [there is a possibility of collision between hashes](https://shattered.io/) but it's extremely low and hosting services like GitHub have collision detection mechanisms in place to protect their content. Each hash is a 40 digit string but git usually tries to present a shorter (but still probably unique) version like the 7 digit strings you can see above. Here are the full hashes of our commits:
+You have probably noticed the weird hexadecimal string appearing alongside our commit messages (ff12e05, 1da1da1, 232cf51). These are abbreviations of commit hashes. Git uses the **SHA-1** hash function to calculate commit hashes. The input is data [like your name, the date, the commit message, the changes in the commit, and most importantly, the commit hash of the previous commit](https://pretextbook.org/gfa/html/commit-hashes.html). And before you ask, [there is a possibility of collision between hashes](https://shattered.io/) but it's extremely low and hosting services like GitHub have collision detection mechanisms in place to protect their content. Each hash is a 40 digit string but Git usually tries to present a shorter (but still probably unique) version like the 7 digit strings you can see above. Here are the full hashes of our commits:
 
 ```bash
 Sergiys-MacBook-Pro:code sbagda01$ git log --shortstat --pretty=oneline
@@ -273,7 +274,7 @@ wider context so we can explore more of Git's powers.
 ## Branches
 
 Branches are a powerful way to diverge from a history. Git automatically creates the
-`master` branch when we run `git init`. In the examples above you have seen the following notation: `(HEAD -> master)`. It means that we have been working on the `master` branch, more precisely, `HEAD` is a pointer to our selected (checked-out) branch. In fact the branch itself is a pointer to our last commit or the last checked-out commit. In the last example above `HEAD` points to `master`, and `master` points to the `ff12e05` commit.
+`master` branch when we run `git init`. In the examples above you have seen the following notation: `(HEAD -> master)`. It means that we have been working on the `master` branch, more precisely, `HEAD` is a pointer to our selected (checked-out) branch. In fact the branch itself is a pointer to our last commit or the last checked-out commit. In the last example above, `HEAD` points to `master`, and `master` points to the `ff12e05` commit.
 
 To list all of the branches we can run:
 
@@ -287,7 +288,7 @@ and `git checkout new_branch_name` in order to select it. I prefer to do both in
 
 ### Scenario B
 
-Imagine that we need to calculate the average of the number we read from the list and
+Imagine that we need to calculate the average of the numbers we read from the list and
 print it to a file as well. But and it's a big one, we aren't allowed to modify the code in our master branch, either because it's being used by someone else (we are going to see how this works) or simply because we want to keep the original implementation intact until
 the new feature is completed. This is the perfect use for branches. 
 
@@ -310,7 +311,7 @@ ff12e05 (HEAD -> calculating_an_average, master) Writing a list of numbers to a 
 232cf51 Reading numbers from file.txt to a list.
 ```
 
-We can see that `HEAD` points to `calculating_an_average` and both `calculating_an_average` and `master` point to `ff12e05`. This makes sense since we haven;t added any commits on top of what we already had in our master branch, but it's time for this to change, here is our new addition:
+we can see that `HEAD` points to `calculating_an_average` and both `calculating_an_average` and `master` point to `ff12e05`. This makes sense since we haven't added any commits on top of what we already had in our master branch, but it's time for this to change, here is our new addition:
 
 ```python
 """calculate_the_sum.py"""
@@ -368,7 +369,7 @@ Sergiys-MacBook-Pro:code sbagda01$ git commit -am "Writing the average to output
 Obviously, we don't wan't to keep *work in progress* in our main history as it should always be in a working and consistent state, ready to be deployed through our pipeline (more on pipelines in another post). We also want to give our colleagues the opportunity to review our code and request changes, suggest improvements, ask questions or simply tell us how awesome our work is. As you have probably guessed, branches enable the following pattern:
 
 1. Keep the main code history in branch A (like our master branch).
-2. Diverge from the main history to develop a feature or fix a bug by creating a new branch (like we did with the calculating_an_average branch which we started of off master).
+2. Diverge from the main history to develop a feature or fix a bug by creating a new branch (like we did with the calculating_an_average branch which we started based on master).
 3. When the work on the new branch is done it can be **merged** back into the main branch to become part of the main history.
 
 
@@ -380,7 +381,7 @@ In Scenario A we have calculated the sum of even numbers from the list. Now we n
 
 > I know, you are probably wondering how would they have access to our code at all, but for now let's assume that the poor developers use the same computer.
 
-Alright let's do this. First we need to create our feature branch of off master. You already know how to do that:
+Alright let's do this. First we need to create our feature branch based on master. You already know how to do that:
 
 
 ```bash
@@ -432,7 +433,7 @@ At some point (usually after passing all of the tests and/or getting approvals f
 
 ## Merging
 
-[Git merge will combine multiple sequences of commits into one unified history. In the most frequent use cases, git merge is used to combine two branches](https://www.atlassian.com/git/tutorials/using-branches/git-merge). Let's see how that works
+[Git merge will combine multiple sequences of commits into one unified history. In the most frequent use cases, `git merge` is used to combine two branches](https://www.atlassian.com/git/tutorials/using-branches/git-merge). Let's see how that works.
 
 Currently we have three branches.
 
@@ -467,7 +468,7 @@ Fast-forward
  1 file changed, 3 insertions(+), 1 deletion(-)
 ```
 
-Here we can see what we (or maybe it's just me) call a **Fast Forward Merge**. This means that the histories from the two branches (master and print_the_sum_of_evens) can be concatenated linearly. In practice this happens when no commits have been made to the main branch since you created your feature branch.
+Here we can see what we (or maybe it's just me) call a **Fast Forward Merge**. This means that the histories from the two branches (master and print_the_sum_of_evens) can be concatenated linearly. In practice this happens when no commits have been made to the main branch since you have created your feature branch.
 
 ```bash
 Sergiys-MacBook-Pro:code sbagda01$ git log --graph --decorate --oneline --all
@@ -480,14 +481,14 @@ Sergiys-MacBook-Pro:code sbagda01$ git log --graph --decorate --oneline --all
 * 232cf51 Reading numbers from file.txt to a list.
 ```
 
-The only difference from earlier is that both **master** and **print_the_sum_of_evens** now point to **94cc0b4** commit. Let's now have branches lying around, we don't need **print_the_sum_of_evens** anymore. In order to delete it run:
+The only difference from earlier is that both **master** and **print_the_sum_of_evens** now point to **94cc0b4** commit. Let's not have branches lying around, we don't need **print_the_sum_of_evens** anymore. In order to delete it run:
 
 ```bash
 Sergiys-MacBook-Pro:code sbagda01$ git branch -d print_the_sum_of_evens
 Deleted branch print_the_sum_of_evens (was 94cc0b4).
 ```
 
-Sometimes, mostly because Git wants to prevent data loss, it won 't let you delete the branch (most of the time it just means that you haven't updated your local history after merging on remote, don't worry if that doesn't mean much to you right now). You can force it with `git -D branch_name`.
+Sometimes, mostly because Git does not want you to loose commits, it won 't let you delete the branch (most of the time it just means that you haven't updated your local history after merging on remote, don't worry if that doesn't mean much to you right now). You can force it with `git -D branch_name`.
 
 The first developer (that would be you, I mean the other developer was also you, but whatever, you get the point) wants to merge the **calculating_an_average** branch into the master as well. There will be two lessons to be learned from the next merge. Here is the first one:
 
@@ -531,7 +532,7 @@ def calculate_the_average_of_numbers_in_a_list(list_of_numbers):
 
 Let's try to interpret the above. First, **=======** is the center of the conflict. From **<<<<<<< HEAD** to **=======** is the text that exists in the branch pointed by the **HEAD**, in other words the current branch (in this case master). From **=======** to **>>>>>>> calculating_an_average** is the text that exists in the branch we are trying to merge in (in our case calculating_an_average). 
 
-In order to complete our merge we need to resolve the above conflict, but how? We need to look at the requirements from Scenarios A, B and B'. We know that we need to read a list of numbers from a file, find the sum of evens, find the average and write these into **output.txt** Looking at our conflicts, the real issue appears in the `write_list_of_numbers_to_file` function. Everything else is code that just needs to be added in order to fulfill our requirements. 
+In order to complete our merge we need to resolve the above conflict, but how? We need to look at the requirements from Scenarios A, B and B'. We know that we need to read a list of numbers from a file, find the sum of evens, find the average and write these into **output.txt**. Looking at our conflicts, the real issue appears in the `write_list_of_numbers_to_file` function. Everything else is code that just needs to be added in order to fulfill our requirements. 
 
 Let's fix `write_list_of_numbers_to_file`.
 
@@ -559,7 +560,7 @@ So `write_list_of_numbers_to_file` will print the list of numbers, the average a
 > Pro tip: This is a logical solution but in this kind of situation, try to confirm the requirements with your manager. You don't want to release the code, only to be told that the sum of evens should appear before the average.
 
 
-> Pro tip: Before trying to merge a feature branch into the main history, first, merge the main branch into your feature branch. There are two main reasons for this. First you are making sure that there are no conflicts early on and the second is to run all of the tests on the absolute latest version of the code. In other words the tests should run on the code that is the absolute closest to what it will look like after merging. The reason is that, the tests might be working on your feature branch and on the main branch but, they might not work when you put the two together. This is not uncommon and usually happens because a part of the code you are working on, affects another part that was changed and merged to the main branch. Of course you have to actually have good tests but this a topic for another post. Remember, the goal is to keep the main history in a working state (at least with some certainty).
+> Pro tip: Before trying to merge a feature branch into the main history, first, merge the main branch into your feature branch. There are two main reasons for this. First, you are making sure that there are no conflicts early on and the second is that you should run all of the tests on the absolute latest version of the code. In other words the tests should run on the code that is the absolute closest to what it will look like after merging. The reason is that, the tests might be working on your feature branch and on the main branch but, they might not work when you put the two together. This is not uncommon and usually happens because a part of the code you are working on, affects another part that was changed and merged to the main branch. Of course you have to actually have good tests, but this a topic for another post. Remember, the goal is to keep the main history in a working state (at least with some certainty).
 
 We aren't done yet. In order to finalize the merge we need to commit.
 
@@ -568,7 +569,7 @@ Sergiys-MacBook-Pro:code sbagda01$ git commit -am "merged calculating_an_average
 [master 220c017] merged calculating_an_average in.
 ```
 
-Don't be scared, plenty of tools (PyCharm, VSCOde etc..., I'm going to write another post on the developer's toolbox) help you solve the merge conflicts by visualizing the differences between the files and that makes it a lot easier.
+Don't be scared, plenty of tools (PyCharm, VSCode etc..., I'm going to write another post on the developer's toolbox) help you solve the merge conflicts by visualizing the differences between the files and that makes it a lot easier.
 
 Delete the **calculating_an_average** branch and check that there is only the *master* left.
 
@@ -767,6 +768,7 @@ including a shorter but a little more advanced second part on Git.
 3. Coding standards and how to enforce them.
 4. The psychology of pull requests and how to find a way out when nobody likes your code.
 5. Programmer's well being.
+6. Developer's toolbox.
 
 
 ## Great Git sources to learn
