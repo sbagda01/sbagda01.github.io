@@ -1,5 +1,5 @@
 ---
-title: How to pretend you know Git Part 1.
+title: How to pretend you know Git - Part 1.
 layout: article
 tags: FirstDayAtWork Git Part1 HandsOn
 key: how_to_pretend_you_know_git
