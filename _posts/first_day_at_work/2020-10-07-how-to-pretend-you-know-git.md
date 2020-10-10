@@ -22,7 +22,7 @@ Git is a very powerful tool to keep a history of file versions and enable collab
 
 ## Commits
 
-In its core, Git keeps track of files. Think about how extremely useful th is. You can create a file, modify it several times and then go trough all the changes you have made. Here is the thing, Git won't remember any of the changes you have made if you don't manually save the state you would like it to remember. Saving a state (or snapshot) is known as creating a commit. A commit remembers what your files look like (basically takes a picture of what all your files look like at that moment and stores a reference to that snapshot - [What is Git?](https://git-scm.com/book/en/v2/Getting-Started-What-is-Git%3F#what_is_git_section)). Let's do some practice.
+In its core, Git keeps track of files. Think about how extremely useful this is. You can create a file, modify it several times and then go trough all the changes you have made. Here is the thing, Git won't remember any of the changes you have made if you don't manually save the state you would like it to remember. Saving a state (or snapshot) is known as creating a commit. A commit remembers what your files look like (basically takes a picture of what all your files look like at that moment and stores a reference to that snapshot - [What is Git?](https://git-scm.com/book/en/v2/Getting-Started-What-is-Git%3F#what_is_git_section)). Let's do some practice.
 
 
 > Note:
