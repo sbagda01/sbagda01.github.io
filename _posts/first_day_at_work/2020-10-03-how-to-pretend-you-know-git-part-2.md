@@ -1,12 +1,23 @@
 ---
-title: How to pretend you know Git.
+title: How to pretend you know Git Part 2.
 layout: article
-tags: FirstDayAtWork Git Part2
+tags: FirstDayAtWork Git Part2 HandsOn
 key: how_to_pretend_you_know_git_part_2
-published: false
+published: true
 ---
+## Prologue:
 
-## Cherry-picking
+This is the second part of my attempt to teach you how to pretend to know Git.
+If you haven't already, [go check the first part out](/2020/10/07/how-to-pretend-you-know-git.html).
+It's not completely necessary but will give you more context. In any case feel free to
+continue either from your own version of the program we have written so far or
+fork [mine](https://github.com/sbagda01/git-is-going-to-eat-you-code).
+
+In this part I'm going to introduce a little bit more advanced usages of Git, but
+hey, this is still to help you as a professional developer on your first day at work...
+if you really want to impress.
+
+## Cherry-picking:
 
 The `cherry-pick` command allows us to pick one or more very specific commits
 and apply them onto a selected branch. I find it very useful in two scenarios.
@@ -17,7 +28,11 @@ Let's go back to our initial program and add a couple of more features. First
 we need a function that would calculate the product of all the numbers in a list
 and a function that would print the product to the standard output. The second
 feature is that we need a function that would calculate the product of all evens
-in a list and a function that would print it to the standard output. I can probably see where am I going with this. One or two developers are asked to build the two features. Let's start on the first one. First I made sure that `master` was up to date, then I created a new branch called `calculate_and_print_the_product` based on master. First let's add a function what calculates a product of the numbers in a list.
+in a list and a function that would print it to the standard output. I can probably 
+see where am I going with this. One or two developers are asked to build the two features. 
+Let's start on the first one. First I made sure that `master` was up to date, then I created 
+a new branch called `calculate_and_print_the_product` based on master. First let's add a 
+function what calculates a product of the numbers in a list.
 
 ```python
 """calculate_the_sum.py"""
@@ -161,12 +176,11 @@ Commit, push and create a pull request!
 
 The other scenario where I find cherry-picking useful is when you have parallel histories which will not be merged together and you need to develop a piece of work for both. You would start two feature branches based on the respective histories. You can do the work for one branch and then cherry pick the commits in the other feature branch. You will make the connection if you come across such a case.
 
-> Note: The `calculate_the_sum.py` file's name is now completely out of sync with its content. I will let you figure out how to rename files using Git.
-
 ## Rebasing
 
 Rebasing is similar to cherry-kicking in the sense that you can replay changes that
 were committed to one branch, onto another. 
+
 
 
 ## Reverting
