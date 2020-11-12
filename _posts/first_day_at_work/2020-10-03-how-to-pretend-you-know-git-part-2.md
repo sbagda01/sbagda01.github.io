@@ -11,7 +11,8 @@ This is the second part of my attempt to teach you how to pretend to know Git.
 If you haven't already, [go check the first part out](/2020/10/07/how-to-pretend-you-know-git.html).
 It's not completely necessary but will give you more context. In any case feel free to
 continue either from your own version of the program we have written so far or
-fork [mine](https://github.com/sbagda01/git-is-going-to-eat-you-code).
+fork [mine](https://github.com/sbagda01/git-is-going-to-eat-you-code) and continue working
+from `master`.
 
 In this part I'm going to introduce a little bit more advanced usages of Git, but
 hey, this is still to help you as a professional developer on your first day at work...
@@ -178,12 +179,143 @@ The other scenario where I find cherry-picking useful is when you have parallel 
 
 ## Rebasing
 
-Rebasing is similar to cherry-kicking in the sense that you can replay changes that
-were committed to one branch, onto another. 
+Rebasing is changing the base of the branch to a different commit. In other words rebasing will
+make your branch look like it was created from a different commit than the one it was actually 
+created from. In [How to pretend you know Git - Part 1.](/2020/10/07/how-to-pretend-you-know-git.html#merging),
+we have seen how merging can create a merge commit which would have two parents. Rebasing allows us
+to create a clean and **linear** history, but why is this important? It's important because it makes going
+over the history and searching for a particular commit much easier. Time to practice.
+
+To keep things simple go ahead and create a new git repository on you computer, then create a file called
+`counter.py`. Add it to Git and make your first commit. Download [this book](https://www.gutenberg.org/cache/epub/174/pg174.txt)
+into the same directory, add it to Git and commit. We are ready to start. Assume that we have been asked to
+create a function that reads our book prints the number of characters in it. 
+
+```bash
+Sergiys-MacBook-Pro:code2 sbagda01$ git branch
+* counting_characters
+  master
+```
+
+```python
+"""counter.py"""
+
+def count_characters(book_file_path):
+    with open(book_file_path, "r") as book:
+        number_of_characters = len(book.read())
+        print(
+            f'Number of characters in {book_file_path} file : '
+            f'{number_of_characters}'
+        )
 
 
+count_characters("pg174.txt")
+```
+
+Assume that another has been asked to create a function that would count the number of unique words in the book
+at the same time.
+
+```bash
+Sergiys-MacBook-Pro:code2 sbagda01$ git branch
+  counting_characters
+* counting_unique_words
+  master
+```
+
+```python
+"""counter.py"""
+
+def count_unique_words(book_file_path):
+    with open(book_file_path, "r") as book:
+        book_as_words = book.read().split()
+        print(
+            f"The number of unique words in {book_file_path} is "
+            f"{len(set(book_as_words))}"
+        )
+
+count_unique_words("pg174.txt")
+```
+
+This is how our work looks so far:
+
+```bash
+Sergiys-MacBook-Pro:code2 sbagda01$ git log --graph --decorate --oneline --all
+* 94f3b0f (counting_unique_words) Unique words counter.
+| * f5bc418 (counting_characters) Characters Counter.
+|/
+* 06a3832 (HEAD -> master) Added book.
+* 20818e0 First commit.
+```
+
+Let's merge `counting_unique_words` into master.
+
+```bash
+Sergiys-MacBook-Pro:code2 sbagda01$ git checkout master
+Switched to branch 'master'
+Sergiys-MacBook-Pro:code2 sbagda01$
+Sergiys-MacBook-Pro:code2 sbagda01$ git merge counting_unique_words
+Updating 06a3832..94f3b0f
+Fast-forward
+ counter.py | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+```
+
+All went as expected. You can now delete `counting_unique_words` branch.
+Instead of trying to merge the `counting_characters` branch into master, let's try rebasing.
+
+```bash
+Sergiys-MacBook-Pro:code2 sbagda01$ git checkout counting_characters
+Switched to branch 'counting_characters'
+Sergiys-MacBook-Pro:code2 sbagda01$ git rebase master
+Auto-merging counter.py
+CONFLICT (content): Merge conflict in counter.py
+error: could not apply f5bc418... Characters Counter.
+Resolve all conflicts manually, mark them as resolved with
+"git add/rm <conflicted_files>", then run "git rebase --continue".
+You can instead skip this commit: run "git rebase --skip".
+To abort and get back to the state before "git rebase", run "git rebase --abort".
+Could not apply f5bc418... Characters Counter.
+```
+
+Makes sense, we have conflicting changes in our file. You already know how to deal
+with the, we would like to achieve the following result:
+
+```bash
+Sergiys-MacBook-Pro:code2 sbagda01$ python3 counter.py
+Number of characters in pg174.txt file : 453169
+The number of unique words in pg174.txt is 12592
+```
+
+Mark `counter.py` as resolved and continue rebasing:
+
+```bash
+Sergiys-MacBook-Pro:code2 sbagda01$ git add counter.py
+Sergiys-MacBook-Pro:code2 sbagda01$ git rebase --continue
+```
+
+Before jumping into what happens next, we need to understand how
+does the rebasing work.
+
+...
+
+This will open an editor which is going to ask you to specify the 
+name of the 
+
+...
+
+```bash
+Sergiys-MacBook-Pro:code2 sbagda01$ git merge counting_characters
+Updating 94f3b0f..c6b2af5
+Fast-forward
+ counter.py | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+Sergiys-MacBook-Pro:code2 sbagda01$ git log --graph --decorate --oneline --all
+* c6b2af5 (HEAD -> master, counting_characters) Characters Counter.
+* 94f3b0f Unique words counter.
+* 06a3832 Added book.
+* 20818e0 First commit.
+```
+
+Amazing, we could merge by fast forwarding and our history is linear!
 
 ## Reverting
-
-
-## How to keep the main history clean.
