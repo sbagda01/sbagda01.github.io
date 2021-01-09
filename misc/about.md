@@ -5,7 +5,7 @@ tags: Welcome, About
 ---
 
 Hi! My name is Sergiy Bagdasar. This is my personal website which includes a programming blog.
-The initial reason I'd started it was to help software engineers feel more confident on their 
+The initial reason I'd started it was to help software engineers feel more confident on their
 first day at work by writing about topics which are not properly covered in universities, but
 are definitely part of your work from day 1. Everything I write is based on research and my
 personal experience from working on multiple projects in the last few years. I hope you enjoy
@@ -21,7 +21,7 @@ performance computing (with a strong incline towards computer architecture) and 
 master degree from the Polytechnic University of Catalonia in 2018. An idea for my own startup
 brought me back to Cyprus for about a year. In 2019 I decided to develop my career in London,
 where I currently live and work as a `python` software engineer. I speak English, Greek and
-Russian, but consider Greek as my main language. 
+Russian, but consider Greek as my main language.
 
 ### Working experience (related to computer science, anyway)
 
@@ -31,7 +31,9 @@ Russian, but consider Greek as my main language.
 - Computer Science Teacher (ages 8-11) based on the CODE education program, Larnaca, 2014-2016.
 - Research Assistant at the Computer Science department, University of Cyprus for three months after graduating in 2016.
     - Topics: Compilers, Reversible Computing.
-- In 2017 I started working on a project called *Loftedball*. I still do in my free time. Go [check it out](https://www.loftedball.com)!
+- In 2017 I started working on a project called *Loftedball*. It has been in
+  production for a few months, but I decided to shut it down.
+  [Here is a short post about Loftedball.](loftedball.html)
     - Tech: Python, Django, PostgreSQL, Redis, Celery, RabbitMQ, Java, Android, Heroku.
 - Since October 2019, I work as a python software engineer at [Yobota](https://yobota.xyz/). We power the best financial products out there (check [LiveLend](https://livelend.co/), [SmartSave](https://smartsavebank.co.uk/), [Fronted](https://fronted.rent/)). By the way, we are hiring!
     - Tech: Python, Django, DRF, Redis, SQL, Jenkins and more.
@@ -53,5 +55,5 @@ Here are a couple of other projects worth mentioning:
 
 ### Site Shortcuts
 
-Enough about me, go read some posts. Press `s` to start searching. Navigate with the `arrows` to select a post. 
+Enough about me, go read some posts. Press `s` to start searching. Navigate with the `arrows` to select a post.
 Press `enter` to open. Or, you can always use your mouse.
